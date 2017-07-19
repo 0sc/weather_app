@@ -8,10 +8,13 @@ end
 ruby "2.4.1"
 
 gem "figaro"
+gem 'jquery-rails'
+gem 'materialize-sass'
 gem "openweather2"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.2"
 gem "sass-rails", "~> 5.0"
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 

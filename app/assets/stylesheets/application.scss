@@ -1,2 +1,11 @@
 @import "materialize";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.card-content p span {
+  padding: 10px
+}
+
+#error {
+  color: red;
+  font-size: small;
+}

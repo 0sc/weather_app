@@ -9,11 +9,12 @@
       <form class="col s12">
         <div class="row">
           <div class="input-field col s6 offset-s3">
-            <input id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
+            <input id="city_name" type="text" />
+            <label for="city_name">City Name</label>
+            <p id="error"></p>
           </div>
           <div class="col s3">
-            <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+            <p><a class="waves-effect waves-light btn" id="submit-btn"><i class="material-icons left">cloud</i>button</a></p>
           </div>
         </div>
       </form>
@@ -23,4 +24,11 @@
 </div>
 
 <div class="container">
+  <div id="weather-results">
+    <div class="row">
+        <div class="col s8 m8 l8 offset-l3">
+          <div class="card teal darken-1"></div>
+        </div>
+      </div>
+  </div>
 </div>

@@ -4,7 +4,7 @@ class WeatherController < ApplicationController
 
   def show
     if params[:city].blank?
-      render json: { error: "invalid entry for city" }, status: 400
+      render plain: "invalid entry for city", status: 400
       return
     end
 

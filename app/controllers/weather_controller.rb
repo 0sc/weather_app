@@ -9,6 +9,7 @@ class WeatherController < ApplicationController
     end
 
     weather = Openweather2.get_weather(city: params[:city])
+    # TODO: handle Openweather2 errors
     render json: weather.to_json
   end
 end

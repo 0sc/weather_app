@@ -43,3 +43,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+Capybara.javascript_driver = :webkit
+Capybara::Webkit.configure do |config|
+  config.block_unknown_urls
+end

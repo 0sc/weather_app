@@ -4,6 +4,8 @@ $(document).ready(function(){
 
     $("#submit-btn").click(function(e){
       e.preventDefault();
+      $("#error").empty();
+
       var cityName = $("#city_name").val().toLowerCase();
       if(cityName === "") {
         showErrorMessage("City name is empty");
@@ -18,15 +20,15 @@ $(document).ready(function(){
           showWeatherInfo(data);
         }).fail(function(data){
           // TODO: format error msg
-          showErrorMessage(data.responseText)
+          showErrorMessage(data.responseText);
         })
       } else {
-        showWeatherInfo(data)
+        showWeatherInfo(data);
       }
     })
 
     function showErrorMessage(msg) {
-      $("#error").text("Error: " + msg)
+      $("#error").text("Error: " + msg);
     }
 
     function showWeatherInfo(data) {
@@ -39,6 +41,7 @@ $(document).ready(function(){
       html += '<p><i class="medium material-icons">wb_cloudy</i><span>Clouds:</span>' + data.clouds + '</p>'
       html += '<p><i class="medium material-icons">toys</i><span>WindSpeed:</span>' + data.wind_speed + '</p>'
       html += '<p><i class="medium material-icons">trending_up</i><span>WindAngle:</span>' + data.wind_angle + '</p>'
+      html += '<p><i class="medium material-icons">leak_add</i><span>Pressure:</span>' + data.pressure + '</p>'
       html += '</div>';
       $("#weather-results .card").html(html);
     }

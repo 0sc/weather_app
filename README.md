@@ -1,4 +1,5 @@
 # Weather App
+![screen_shot](http://res.cloudinary.com/di39drj0g/image/upload/v1500552682/Screen_Shot_2017-07-20_at_1.11.04_PM_qkbjgf.png)
 
 This is a simple weather app to display the current weather in any given city. It leverages [OpenWeatherMap](https://openweathermap.org/) to retrieve the weather information for the given city name.
 

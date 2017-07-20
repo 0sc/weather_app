@@ -6,7 +6,7 @@ feature "checking_weather_info" do
     visit root_path
   end
 
-  it "shows user weather info for the entered city name", js: true do
+  it "displays the weather info for the entered city name", js: true do
     fill_in("city_name", with: "some-city_name")
     find("#submit-btn").click
 
@@ -17,9 +17,21 @@ feature "checking_weather_info" do
     end
   end
 
-  it "shows an error if no city name is entered", js: true do
+  it "displays an error if no city name is entered", js: true do
     find("#submit-btn").click
     expect(page.find("#error")).to have_content("Error: City name is empty")
+    expect(page.find("#weather-results .card").text).to be_empty
+  end
+
+  it "displays an error if fetching weather info was unsuccessful", js: true do
+    allow(Openweather2).to receive(:get_weather).and_raise("Fake Error")
+
+    fill_in("city_name", with: "some-city_name")
+    find("#submit-btn").click
+    expect(page.find("#error")).to have_content(
+      "Couldn't fetch weather info for 'some-city_name'. "\
+      "Check that input is a valid city name and try again."
+    )
     expect(page.find("#weather-results .card").text).to be_empty
   end
 

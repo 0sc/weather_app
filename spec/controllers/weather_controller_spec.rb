@@ -10,10 +10,10 @@ RSpec.describe WeatherController, type: :controller do
 
   describe "GET show" do
     context "city name is empty" do
-      it "returns an error" do
+      it "returns an error message" do
         get :show, params: { city: "" }
         expect(response.status).to be 400
-        expect(response.body).to eq "invalid entry for city"
+        expect(response.body).to eq "City name is empty"
       end
     end
 
@@ -24,6 +24,18 @@ RSpec.describe WeatherController, type: :controller do
         get :show, params: { city: "San Francisco" }
         expect(response.status).to be 200
         expect(JSON.parse(response.body)).to eq sample_response
+      end
+    end
+
+    context "error fetching weather info" do
+      it "returns an error message" do
+        allow(Openweather2).to receive(:get_weather).and_raise("Fake Error")
+        get :show, params: { city: "San Francisco" }
+        expect(response.status).to be 404
+        expect(response.body).to eq(
+          "Couldn't fetch weather info for 'San Francisco'. "\
+          "Check that input is a valid city name and try again."
+        )
       end
     end
   end
